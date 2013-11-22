@@ -37,6 +37,8 @@ RSpec.configure do |config|
   # Factory girl
   config.include FactoryGirl::Syntax::Methods
 
+  config.include UserLogin
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 

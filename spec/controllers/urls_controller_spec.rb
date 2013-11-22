@@ -16,4 +16,18 @@ describe UrlsController do
     expect(response).to_not be_successful
     expect(response.status).to eq(404)
   end
+
+  it 'Should be able to create urls for anonymous users' do
+    post :create, url: {full: 'http://sheltonplace.com'}
+    url = assigns(:url)
+    expect(url).to be_persisted
+  end
+
+  it 'Should assign the current user to the url if someone is logged in' do
+    user = create(:user)
+    login(user)
+    post :create, url: {full: 'http://sheltonplace.com'}
+    url = assigns(:url)
+    expect(url.user).to eq(user)
+  end
 end
