@@ -25,4 +25,10 @@ describe Url do
       expect(url).to be_valid
     end
   end
+
+  it 'Should normalise URLs' do
+    url = Url.create full: 'hTTp://ShelTonPlace.com/'
+    expect(url).to be_persisted
+    expect(url.full).to eq("http://sheltonplace.com")
+  end
 end
