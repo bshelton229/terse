@@ -62,6 +62,18 @@ describe Url do
     expect(Url.expand "badslug").to be_nil
   end
 
+  it "Should try to get the remote site's title" do
+    url = create(:url)
+    expect(url.title).to eq("Bryan Shelton | Home")
+  end
+
+  it "Should leave title blank if it can't reach a host" do
+    url = create(:url, full: 'http://baddomain.com')
+    expect(url).to be_persisted
+    a_request(:get, "http://baddomain.com").should have_been_made
+    expect(url.title).to be_nil
+  end
+
   context 'Redirection' do
     it 'Should provide a redirect! class method, which will add a visit, and return a model or nil' do
       url = create(:url)

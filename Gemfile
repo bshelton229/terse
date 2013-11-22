@@ -13,6 +13,8 @@ gem "bootstrap-sass", "~> 3.0.2.1"
 gem "omniauth", "~> 1.1.4"
 gem "omniauth-github", "~> 1.1.1"
 
+gem "nokogiri", "~> 1.6.0"
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
@@ -38,4 +40,8 @@ group :development, :test do
   gem 'spring'
   gem 'factory_girl_rails', '~> 4.3.0'
   gem "capybara", "~> 2.1.0"
+end
+
+group :test do
+  gem 'webmock'
 end

@@ -1,9 +1,13 @@
+require 'open-uri'
+
 class Url < ActiveRecord::Base
   belongs_to :user
   has_many :visits, class_name: 'VisitLog'
   validates :full, url: true
   validates :slug, uniqueness: true
-  before_create :normalize_full, :generate_slug
+  before_create :normalize_full,
+                :generate_slug,
+                :fetch_title
 
   # Expand a slug to a full url
   def self.expand(slug)
@@ -37,5 +41,12 @@ class Url < ActiveRecord::Base
       self.full = uri.to_s
       # If the request_uri is simply /, then remove it
       self.full.gsub!(/\/\z/,"") if uri.request_uri.eql?("/")
+    end
+
+    def fetch_title
+      begin
+        xml = Nokogiri::HTML open(self.full)
+        self.title = xml.css("title").text if xml.css("title").present?
+      rescue Exception => e;end
     end
 end

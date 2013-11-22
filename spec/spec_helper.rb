@@ -3,6 +3,7 @@ ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
+require 'webmock/rspec'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -21,6 +22,8 @@ OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
     name: 'Bryan Shelton'
   }
 })
+
+WebMock.disable_net_connect!(allow_localhost: true)
 
 RSpec.configure do |config|
   # ## Mock Framework
@@ -52,4 +55,9 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+
+  # Always stub sheltonplace.com to the fixture
+  config.before(:each) do
+    stub_request(:any, "sheltonplace.com").to_return(body: Rails.root.join('spec/fixtures/sheltonplace.com.html').read)
+  end
 end
