@@ -9,6 +9,7 @@ class UrlsController < ApplicationController
     respond_to do |format|
       if @url.save
         format.html { redirect_to root_path }
+        format.js
       else
         format.html { redirect_to root_path }
       end

@@ -1,1 +1,6 @@
 %h1 Terse url shortener
+=form_for @url, data: { remote: true }, html: { class: 'form form-inline' } do |f|
+  .form-group
+    =f.text_field :full, class: 'form-control input-lg', style: 'width:600px'
+  =f.submit nil, class: 'btn bnt-primary btn-lg'
+#results
