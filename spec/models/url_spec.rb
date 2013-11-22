@@ -54,4 +54,11 @@ describe Url do
     url = create(:url, user: user)
     expect(url.user).to eq(user)
   end
+
+  it 'Should provide an expand class method' do
+    url = create(:url, full: 'http://sheltonplace.com')
+    expect(url).to be_persisted
+    expect(Url.expand url.slug).to eq("http://sheltonplace.com")
+    expect(Url.expand "badslug").to be_nil
+  end
 end
