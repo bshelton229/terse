@@ -51,6 +51,8 @@ GEM
       multipart-post (~> 1.2.0)
     font-awesome-rails (4.0.3.0)
       railties (>= 3.2, < 5.0)
+    haml (4.0.4)
+      tilt
     hashie (2.0.5)
     hike (1.2.3)
     httpauth (0.2.0)
@@ -176,6 +178,7 @@ DEPENDENCIES
   capybara (~> 2.1.0)
   factory_girl_rails (~> 4.3.0)
   font-awesome-rails
+  haml
   jbuilder (~> 1.2)
   jquery-rails
   nokogiri (~> 1.6.0)
