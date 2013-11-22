@@ -1,0 +1,9 @@
+<% if current_user %>
+  <% if current_user.image_url.present? %>
+    <%= image_tag current_user.image_url %>
+  <% end %>
+  <%= current_user.username %>
+  <%= link_to '[logout]', logout_path %>
+<% else %>
+  <%=link_to fa_icon('github') + ' Login with github', '/auth/github' %>
+<% end %>

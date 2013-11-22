@@ -10,11 +10,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <% if current_user %>
-        <h2>
-          <%= image_tag current_user.image_url %>
-          <%= current_user.username %> <%= link_to '[logout]', logout_path %></h2>
-      <% end %>
+      <%= render partial: 'users/widget' %>
       <%= yield %>
     </div>
   </div>
