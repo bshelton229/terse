@@ -10,6 +10,9 @@ class Url < ActiveRecord::Base
                 :fetch_title
 
 
+  # Default will_paginate
+  self.per_page = 15
+
   scope :top, -> { includes(:visits).order("created_at DESC") }
 
   # Expand a slug to a full url
