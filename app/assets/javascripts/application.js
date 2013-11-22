@@ -12,9 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap
 //= require_tree .
 $(document).on('submit', '#shorten_form', function(e) {
-  $this = $(this);
+  $("#errors").addClass('hidden');
   $("#result").html('');
   $("#shorten_form_submit").attr('disabled', true);
 });

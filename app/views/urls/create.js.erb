@@ -1,3 +1,10 @@
-$("#result").html('<%=j render 'widget' %>');
 $("#shorten_form_submit").attr('disabled', false);
-$("#short_url").select();
+<% if @url.errors.any? %>
+  $("#errors .message").html('Invalid url "<%= @url.full %>". Did you remember to include http(s)://?');
+  $("#errors").removeClass('hidden');
+  $("#result").html('');
+<% else %>
+  $("#errors").addClass('hidden');
+  $("#result").html('<%=j render 'widget' %>');
+  $("#short_url").select();
+<% end %>

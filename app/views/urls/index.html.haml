@@ -1,6 +1,8 @@
 .row
   .col-xs-12
     %h1 Terse url shortener
+    #errors.alert.alert-danger.hidden
+      .message Invalid url, make sure to include http(s)://
     =form_for @url, url: urls_path, method: 'post', data: { remote: true }, html: { class: 'form form-inline', id: 'shorten_form'} do |f|
       .form-group
         =f.text_field :full, class: 'form-control', style: 'width:450px', autofocus: true
