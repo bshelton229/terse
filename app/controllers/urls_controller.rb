@@ -4,7 +4,7 @@ class UrlsController < ApplicationController
   end
 
   def resolve
-    @url = Url.find_by slug: params[:slug]
+    @url = Url.redirect! params[:slug], request
     respond_to do |format|
       if @url
         format.html { redirect_to @url.full }

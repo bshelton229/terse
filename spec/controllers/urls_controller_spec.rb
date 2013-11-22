@@ -5,6 +5,10 @@ describe UrlsController do
     url = create(:url, full: 'http://sheltonplace.com')
     get :resolve, slug: url.slug
     expect(response).to redirect_to("http://sheltonplace.com")
+    expect(url.visit_count).to eq(1)
+    visit = url.visits.first
+    expect(visit.ip).to eq(request.env['REMOTE_ADDR'])
+    expect(visit.referer).to eq(request.env['HTTP_REFERER'])
   end
 
   it 'Shoudl return 404 for non-existing slugs' do
