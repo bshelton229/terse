@@ -15,3 +15,6 @@ config/config.yml
 github_key: 123somekey
 github_secret: 456somesecret
 ```
+
+You can also visit /auth/developer, when in development or test mode, and input a username to log in, without setting
+up Github authentication.
