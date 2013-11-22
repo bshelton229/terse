@@ -10,4 +10,5 @@
       %tr
         %td=link_to short_url(url),short_url(url), target: '_blank'
         %td=url.full
-        %td=url.visit_count
+        %td
+          .badge=url.visit_count
