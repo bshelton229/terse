@@ -25,6 +25,7 @@ gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+gem 'unicorn'
 gem 'rails_12factor', group: :production
 
 group :doc do
