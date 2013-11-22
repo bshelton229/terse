@@ -35,7 +35,7 @@ describe UrlsController do
     user = create(:user)
     login(user)
     get :index
-    expect(assigns(:user_urls)).to eq(user.urls)
+    expect(assigns(:user_urls).first).to eq(user.urls.first)
   end
 
   it 'Should not provide user_urls if a user is not logged in' do
