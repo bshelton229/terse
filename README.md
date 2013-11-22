@@ -2,6 +2,8 @@
 
 An example url shortener application.
 
+[http://terse.herokuapp.com/](http://terse.herokuapp.com/)
+
 ## Development ##
 
 This app uses Github authentication. Create a github application, and either set the GITHUB_KEY and GITHUB_SECRET
