@@ -31,4 +31,27 @@ describe Url do
     expect(url).to be_persisted
     expect(url.full).to eq("http://sheltonplace.com")
   end
+
+  it 'Should generate a slug for each URL' do
+    url = create(:url)
+    expect(url.slug).to_not be_nil
+  end
+
+  it 'Should enforce unique slugs, case sensitive' do
+    url = create(:url, slug: 'aBc')
+    expect(url).to be_persisted
+
+    url2 = build(:url, slug: 'aBc')
+    expect(url2).to_not be_valid
+    expect(url2.errors[:slug].first).to match %r{taken}
+
+    url3 = build(:url, slug: 'ABc')
+    expect(url3).to be_valid
+  end
+
+  it 'Should be able to attach a user' do
+    user = create(:user)
+    url = create(:url, user: user)
+    expect(url.user).to eq(user)
+  end
 end
