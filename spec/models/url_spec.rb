@@ -10,6 +10,7 @@ describe Url do
     }.each do |url|
       url = Url.new full: url
       expect(url).to_not be_valid
+      expect(url.errors[:full].first).to match %r{is not a url}
     end
   end
 
