@@ -11,10 +11,12 @@
   %body
     .container
       .row
-        .col-xs-6
-          =yield
-        .col-xs-6
+        .col-xs-12
           =render partial: 'users/widget'
+          =yield
+      .row
+        .col-xs-6#result
+        .col-xs-6
           #user_urls
             -if current_user
               =render partial: 'users/urls'

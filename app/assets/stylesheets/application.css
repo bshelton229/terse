@@ -23,6 +23,15 @@ h1, h2, h3, h4 {
   font-family: 'Oswald', sans-serif;
 }
 
-#result {
-  margin-top:20px;
+.row {
+  margin-bottom: 50px;
+}
+
+.url-field {
+  width: 500px;
+}
+
+.login-widget {
+  padding-top: 20px;
+  font-size: 20px;
 }

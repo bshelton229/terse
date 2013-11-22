@@ -1,6 +1,13 @@
+%h4 15 newest urls shortened for #{current_user.username}
 %table.table.table-striped
-  -@user_urls.each do |url|
+  %thead
     %tr
-      %td=url.full
-      %td=link_to short_url(url),short_url(url), target: '_blank'
-      %td=url.visit_count
+      %th Short
+      %th Full
+      %th Visits
+  %tbody
+    -@user_urls.each do |url|
+      %tr
+        %td=link_to short_url(url),short_url(url), target: '_blank'
+        %td=url.full
+        %td=url.visit_count

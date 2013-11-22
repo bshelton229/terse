@@ -1,6 +1,7 @@
--if current_user
-  =image_tag current_user.image_url if current_user.image_url.present?
-  =current_user.username
-  =link_to '[lgout]', logout_path
--else
-  =link_to fa_icon('github')+' Github login', '/auth/github'
+.login-widget.pull-right
+  -if current_user
+    =image_tag current_user.image_url, width: '24px' if current_user.image_url.present?
+    =current_user.username
+    =link_to '[logout]', logout_path
+  -else
+    =link_to fa_icon('github')+' Login with Github', '/auth/github'
