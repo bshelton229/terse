@@ -2,7 +2,7 @@ require 'open-uri'
 
 class Url < ActiveRecord::Base
   belongs_to :user
-  has_many :visits, class_name: 'VisitLog'
+  has_many :visits, class_name: 'VisitLog', dependent: :destroy
   validates :full, url: true
   validates :slug, uniqueness: true
   before_create :normalize_full,

@@ -11,4 +11,12 @@ describe VisitLog do
     expect(visit.save).to be_true
     expect(visit).to be_persisted
   end
+
+  it 'Should be removed with contingent urls' do
+    url = create(:url)
+    Url.redirect! url.slug
+    expect(VisitLog.count).to eq(1)
+    url.destroy
+    expect(VisitLog.count).to eq(0)
+  end
 end
