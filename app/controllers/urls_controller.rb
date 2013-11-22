@@ -1,7 +1,7 @@
 class UrlsController < ApplicationController
   def index
     @url = Url.new
-    @user_urls = current_user.urls if current_user
+    @user_urls = current_user.urls.order("created_at DESC").limit(20) if current_user
   end
 
   def create

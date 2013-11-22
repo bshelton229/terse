@@ -1,0 +1,6 @@
+%table.table.table-striped
+  -@user_urls.each do |url|
+    %tr
+      %td=url.full
+      %td=link_to short_url(url),short_url(url), target: '_blank'
+      %td=url.visit_count
