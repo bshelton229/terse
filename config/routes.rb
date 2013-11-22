@@ -6,5 +6,5 @@ Terse::Application.routes.draw do
   # Development omniauth-github
   post '/auth/developer/callback', to: 'sessions#developer_strategy' unless Rails.env.production?
 
-  get '*slug', to: 'urls#resolve'
+  get '*slug', to: 'urls#resolve', as: 'resolve'
 end
