@@ -61,4 +61,24 @@ describe Url do
     expect(Url.expand url.slug).to eq("http://sheltonplace.com")
     expect(Url.expand "badslug").to be_nil
   end
+
+  context 'Redirection' do
+    it 'Should provide a redirect! class method, which will add a visit, and return a model or nil' do
+      url = create(:url)
+      expect(url.visits).to be_blank
+      redirect = Url.redirect! url.slug
+      expect(redirect).to eq(url)
+      expect(url.visits.count).to eq(1)
+
+      redirect = Url.redirect! url.slug
+      expect(url.visits.count).to eq(2)
+
+      expect(url.visit_count).to eq(2)
+    end
+
+    it 'Should return nil if there is no slug found' do
+      redirect = Url.redirect! 'badslug'
+      expect(redirect).to be_nil
+    end
+  end
 end

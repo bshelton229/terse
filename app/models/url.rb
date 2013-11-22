@@ -1,5 +1,6 @@
 class Url < ActiveRecord::Base
   belongs_to :user
+  has_many :visits, class_name: 'VisitLog'
   validates :full, url: true
   validates :slug, uniqueness: true
   before_create :normalize_full, :generate_slug
@@ -7,6 +8,22 @@ class Url < ActiveRecord::Base
   # Expand a slug to a full url
   def self.expand(slug)
     ( url = find_by slug: slug ) ? url.full : nil
+  end
+
+  # Takes a slug and a controller request object
+  # Returns either a url object, or nil
+  def self.redirect!(slug, request=nil)
+    url = find_by slug: slug
+    if url
+      url.visits.create(request: request)
+      url
+    else
+      nil
+    end
+  end
+
+  def visit_count
+    visits.count
   end
 
   private
