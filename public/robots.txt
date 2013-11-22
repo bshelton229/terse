@@ -1,0 +1,3 @@
+# Ban All robots, example project
+User-agent: *
+Disallow: /
