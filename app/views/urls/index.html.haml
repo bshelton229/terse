@@ -1,9 +1,9 @@
 .row
   .col-xs-12
     %h1 Terse url shortener
-    =form_for @url, url: urls_path, method: 'post', data: { remote: true }, html: { class: 'form form-inline' }, id: 'shorten_form' do |f|
+    =form_for @url, url: urls_path, method: 'post', data: { remote: true }, html: { class: 'form form-inline', id: 'shorten_form'} do |f|
       .form-group
         =f.text_field :full, class: 'form-control', style: 'width:450px', autofocus: true
-      =f.submit 'Shorten', class: 'btn bnt-primary btn'
+      =f.submit 'Shorten', class: 'btn bnt-primary btn', id: 'shorten_form_submit'
 .row
   .col-xs-12#result

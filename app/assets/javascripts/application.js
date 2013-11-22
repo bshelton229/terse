@@ -13,3 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+$(document).on('submit', '#shorten_form', function(e) {
+  $this = $(this);
+  $("#results").html('');
+  $("#shorten_form_submit").attr('disabled', true);
+});
