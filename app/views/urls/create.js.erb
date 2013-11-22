@@ -1,4 +1,7 @@
+// Re-enable the submit button
 $("#shorten_form_submit").attr('disabled', false);
+
+// Check to see if there were errors saving the url
 <% if @url.errors.any? %>
   $("#errors .message").html('Invalid url "<%= @url.full %>". Did you remember to include http(s)://?');
   $("#errors").removeClass('hidden');
@@ -6,5 +9,11 @@ $("#shorten_form_submit").attr('disabled', false);
 <% else %>
   $("#errors").addClass('hidden');
   $("#result").html('<%=j render 'widget' %>');
+
+  // Update the users's url list
+  <% if current_user %>
+    $("#user_urls").html('<%=j render partial: 'users/urls' %>');
+  <% end %>
+
   $("#short_url").select();
 <% end %>

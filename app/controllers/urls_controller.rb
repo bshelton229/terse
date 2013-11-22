@@ -2,19 +2,21 @@ class UrlsController < ApplicationController
   def index
     @url = Url.new
     @user_urls = current_user.urls.order("created_at DESC").limit(20) if current_user
+
+    respond_to do |format|
+      format.html
+    end
   end
 
   def create
     @url = Url.new(url_params)
     @url.user = current_user if current_user
+    @url.save
+    @user_urls = current_user.urls.order("created_at DESC").limit(20) if current_user
+
     respond_to do |format|
-      if @url.save
-        format.html { redirect_to root_path }
-        format.js
-      else
-        format.html { redirect_to root_path }
-        format.js
-      end
+      format.html { redirect_to root_path }
+      format.js
     end
   end
 

@@ -12,5 +12,6 @@
           =yield
         .col-xs-6
           =render partial: 'users/widget'
-          -if current_user
-            =render partial: 'users/urls'
+          #user_urls
+            -if current_user
+              =render partial: 'users/urls'
