@@ -8,6 +8,7 @@
   %body
     .container
       .row
-        .col-xs-12
-          =render partial: 'users/widget'
+        .col-xs-6
           =yield
+        .col-xs-6
+          =render partial: 'users/widget'

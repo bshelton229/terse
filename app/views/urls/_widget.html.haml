@@ -1,4 +1,9 @@
-.row
-  .col-xs-12
-    =link_to @url.full, @url.full
-    =link_to root_url+@url.slug, root_url+@url.slug
+%hr
+=text_field_tag :url, short_url(@url), class: 'form-control', id: 'short_url'
+-if @url.title
+  %h2
+    Title:
+    =@url.title
+%h3
+  Full url:
+  =link_to @url.full, @url.full

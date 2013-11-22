@@ -1,6 +1,6 @@
 Terse::Application.routes.draw do
   root 'urls#index'
-  resources :urls
+  resources :urls, only: [:index, :create]
   get '/logout', to: 'sessions#destroy', as: 'logout'
   get '/auth/github/callback', to: 'sessions#create'
   # Development omniauth-github
