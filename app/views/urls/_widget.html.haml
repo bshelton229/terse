@@ -1,10 +1,5 @@
-%hr
-=label_tag :url, "Shortened Url"
-=text_field_tag :url, short_url(@url), class: 'form-control', id: 'short_url'
--if @url.title
-  %h2
-    Title:
-    =@url.title
-%h3
-  Full url:
-  =link_to @url.full, @url.full
+.panel.panel-default
+  .panel-heading=url_display_name(@url)
+  .panel-body
+    =label_tag :url, "Shortened Url"
+    =text_field_tag :url, short_url(@url), class: 'form-control', id: 'short_url'
