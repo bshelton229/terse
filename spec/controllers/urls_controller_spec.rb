@@ -30,4 +30,16 @@ describe UrlsController do
     url = assigns(:url)
     expect(url.user).to eq(user)
   end
+
+  it 'Should provide user_urls when a user is logged in' do
+    user = create(:user)
+    login(user)
+    get :index
+    expect(assigns(:user_urls)).to eq(user.urls)
+  end
+
+  it 'Should not provide user_urls if a user is not logged in' do
+    get :index
+    expect(assigns(:user_urls)).to be_nil
+  end
 end

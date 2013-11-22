@@ -1,6 +1,7 @@
 class UrlsController < ApplicationController
   def index
     @url = Url.new
+    @user_urls = current_user.urls if current_user
   end
 
   def create
