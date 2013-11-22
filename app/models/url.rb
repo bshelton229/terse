@@ -9,6 +9,9 @@ class Url < ActiveRecord::Base
                 :generate_slug,
                 :fetch_title
 
+
+  scope :top, -> { includes(:visits).order("created_at DESC") }
+
   # Expand a slug to a full url
   def self.expand(slug)
     ( url = find_by slug: slug ) ? url.full : nil

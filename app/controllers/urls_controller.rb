@@ -1,7 +1,7 @@
 class UrlsController < ApplicationController
   def index
     @url = Url.new
-    @user_urls = current_user.urls.order("created_at DESC").limit(20) if current_user
+    @user_urls = current_user.urls.top.paginate(page: params[:page], per_page: 10) if current_user
 
     respond_to do |format|
       format.html
@@ -12,7 +12,7 @@ class UrlsController < ApplicationController
     @url = Url.new(url_params)
     @url.user = current_user if current_user
     @url.save
-    @user_urls = current_user.urls.order("created_at DESC").limit(20) if current_user
+    @user_urls = current_user.urls.top.paginate(page: params[:page], per_page: 10) if current_user
 
     respond_to do |format|
       format.html { redirect_to root_path }

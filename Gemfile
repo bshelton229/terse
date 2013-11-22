@@ -11,6 +11,7 @@ gem 'sass-rails', '~> 4.0.0'
 gem "bootstrap-sass", "~> 3.0.2.1"
 gem "font-awesome-rails"
 gem "haml"
+gem "will_paginate", "~> 3.0.5"
 
 gem "omniauth", "~> 1.1.4"
 gem "omniauth-github", "~> 1.1.1"
