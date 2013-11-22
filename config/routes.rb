@@ -7,4 +7,6 @@ Terse::Application.routes.draw do
   post '/auth/developer/callback', to: 'sessions#developer_strategy' unless Rails.env.production?
 
   get '/logout', to: 'sessions#destroy', as: 'logout'
+
+  get '*slug', to: 'urls#resolve'
 end
