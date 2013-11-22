@@ -15,6 +15,6 @@
 //= require_tree .
 $(document).on('submit', '#shorten_form', function(e) {
   $this = $(this);
-  $("#results").html('');
+  $("#result").html('');
   $("#shorten_form_submit").attr('disabled', true);
 });
